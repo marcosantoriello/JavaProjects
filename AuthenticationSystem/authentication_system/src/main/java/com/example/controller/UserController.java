@@ -19,12 +19,13 @@ public class UserController {
             String hashedPassword = DigestUtils.sha256Hex(password);
             try {
                 userDAO.insertUser(username, hashedPassword);
+                return true;
             } catch (SQLException e) {
                 System.err.println("There was an error in registering the user.");
                 return false;
             }
         }
-        System.out.println("Username already taken.");
+        System.out.println("Username already taken.\nPlease, insert a new one.");
         return false;
     }
 
