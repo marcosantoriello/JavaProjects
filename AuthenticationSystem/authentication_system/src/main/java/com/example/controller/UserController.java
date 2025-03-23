@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import com.example.DAO.UserDAO;
+import com.example.model.User;
 
 public class UserController {
     private UserDAO userDAO = null;
@@ -16,7 +17,6 @@ public class UserController {
     public boolean registerUser(String username, String password) {
         if (!isUsernameAlreadyTaken(username)) {
             String hashedPassword = DigestUtils.sha256Hex(password);
-            System.out.println("PASSWORD HASH:\n" + hashedPassword);
             try {
                 userDAO.insertUser(username, hashedPassword);
             } catch (SQLException e) {
@@ -24,7 +24,22 @@ public class UserController {
                 return false;
             }
         }
+        System.out.println("Username already taken.");
         return false;
+    }
+
+    public boolean login(String username, String password) {
+        String hashedPassword = DigestUtils.sha256Hex(password);
+            try {
+                User user = userDAO.selectUserByUsername(username);
+                if (user == null || !user.getPassword().equals(hashedPassword)) {
+                    return false;
+                }
+                return true; // if username and pw matches are found
+            } catch (SQLException e) {
+                System.err.println("There was an error in registering the user.");
+                return false;
+            }
     }
 
     private boolean isUsernameAlreadyTaken(String username) {
@@ -34,7 +49,6 @@ public class UserController {
             }
         } catch (SQLException e) {
             System.err.println("There was an error while retrieving the user.");
-            e.printStackTrace();
             // prevent the user from signing up if we can't verify username availability
             return true; 
         }
