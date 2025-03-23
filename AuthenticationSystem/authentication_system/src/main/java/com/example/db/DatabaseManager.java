@@ -9,6 +9,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class DatabaseManager {
+    // prevent instantiation according to the Singleton pattern
+    private DatabaseManager() {}
+
     private static String dbName;
     // Taking the db name from a JSON file just as an exercise
     static {
