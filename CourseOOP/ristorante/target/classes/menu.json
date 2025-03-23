@@ -1,0 +1,40 @@
+{
+    "menu": {
+        "piatti": [
+            {
+                "nome": "pasta",
+                "prezzo": 10.5
+            },
+            {
+                "nome": "lasagna",
+                "prezzo": 15.9
+            },
+            {
+                "nome": "pizza",
+                "prezzo": 5.0
+            },
+            {
+                "nome": "dolce",
+                "prezzo": 7.0
+            }
+        ],
+        "bevande": [
+            {
+                "nome": "acqua naturale",
+                "prezzo": 1.5
+            },
+            {
+                "nome": "acqua frizzante",
+                "prezzo": 2.0
+            },
+            {
+                "nome": "coca cola",
+                "prezzo": 3.5
+            },
+            {
+                "nome": "fanta",
+                "prezzo": 3.5
+            }
+        ]
+    }
+}
