@@ -1,11 +1,9 @@
 package com.example;
 
 import java.io.Console;
-import java.util.Scanner;
 
 import com.example.controller.UserController;
 import com.example.db.DatabaseInitializer;
-import com.example.model.User;
 
 public class App 
 {
